@@ -1,0 +1,275 @@
+STIM Prototype - Detailed Model Input/Output and Results Summary
+Generated on: 2026-05-11
+Repository path: /home/andina/RLProject/STIM_Version1/spatial_im_airline_repo
+
+====================================================================
+1) What the model takes as INPUT
+====================================================================
+
+A) Data inputs
+- Airports file: data/sample_airline/airports.csv
+  Required fields: airport_id, iata, lat, lon (plus metadata like name).
+- Routes file: data/sample_airline/routes.csv
+  Required fields: source_airport_id, target_airport_id.
+- These static files define topology (who is connected to whom) and coordinates.
+
+B) Synthetic temporal signal inputs
+- The repository creates time-varying edge weights from the static graph using:
+  - snapshots (T)
+  - seasonal_strength
+  - noise_std
+- In default configs this appears as synthetic traffic/activation probability over time.
+
+C) Configuration inputs (main knobs)
+From configs/airline_synth.yaml and configs/airline_pretrain_reusable.yaml:
+- simulator:
+  - mc_rollouts (Monte Carlo count for raw evaluation)
+  - activation_threshold
+  - coverage_radius_km
+- model (diffusor / surrogate):
+  - hidden_dim, layers
+  - diffusor_lr, diffusor_epochs
+  - teacher_mc_rollouts
+  - marginal_loss_weight, ranking_loss_weight
+- rl (policy training):
+  - budget k (number of seeds selected)
+  - gamma, lr
+  - train_episodes, warmup_episodes
+  - epsilon schedule (eps_start, eps_end, eps_decay)
+- reward:
+  - beta_coverage, lambda_cost
+  - cost_mode, distance_cost_scale
+- evaluation:
+  - regime in {spread, dynamic, spatial}
+
+D) Regime-specific runtime inputs
+- spread: typically one frozen snapshot start.
+- dynamic: sequence of snapshots; temporal evolution matters.
+- spatial: spatial utility terms (coverage/cost) active.
+
+E) Transfer protocol inputs
+For each transfer target cell, the run receives:
+- target size N (e.g., 300 or 500)
+- target budget k (5,10,15 in corrected sweep)
+- regime-specific tuned artifacts from source subset
+- adaptation iterations and start snapshot
+
+Important correction applied:
+- scripts/evaluate_transfer_homogeneous.py now preserves target budget from transfer config.
+- This prevents tuned artifact files from forcing an old source budget (e.g., 3).
+- So the k=5,10,15 transfer comparison is now valid.
+
+====================================================================
+2) What the model produces as OUTPUT
+====================================================================
+
+A) Core decision output
+- A seed set of size k:
+  - seeds_idx (node indices)
+  - seeds_iata (airport codes)
+
+B) Learned-environment outputs
+- learned_env_objective (surrogate-based objective used during learning/tuning)
+
+C) Raw Monte Carlo outputs (ground-truth evaluation)
+- raw_objective
+- raw_final_activated_mass
+- raw_expected_coverage
+- raw_intervention_cost
+
+D) Transfer-mode outputs per regime
+- zero_shot
+- transfer_adapt (warm-start)
+- scratch_adapt
+- plus baselines and best_baseline selection
+
+E) Transfer metrics output
+- curve_transfer_ratio
+- raw_transfer_ratio_warmstart_vs_scratch
+- raw_transfer_ratio_zero_shot_vs_scratch
+- raw_objective gains vs scratch
+- adaptation efficiency metrics
+
+F) Artifact/output files
+- Main comparison JSON:
+  artifacts/compare_regimes_current_tuned.json
+- Corrected transfer sweep JSONs:
+  artifacts/transfer_target300_budget5.json
+  artifacts/transfer_target300_budget10.json
+  artifacts/transfer_target300_budget15.json
+  artifacts/transfer_target500_budget5.json
+  artifacts/transfer_target500_budget10.json
+  artifacts/transfer_target500_budget15.json
+- Figures:
+  artifacts/experiment_ladder_figures/*.png
+  artifacts/paper_minimal/figures/*.png
+- Tables:
+  artifacts/paper_minimal/tables/*.md
+  artifacts/paper_minimal/tables/*.tex
+
+====================================================================
+3) Detailed explanation of RESULTS
+====================================================================
+
+A) Main tuned regime comparison (small benchmark table)
+Source: artifacts/paper_minimal/tables/table_main_results.md
+
+- Spread regime:
+  RL objective = 5.344 vs best baseline 5.594 (delta -0.250)
+  Interpretation: RL is close but still below greedy spread in this setup.
+
+- Dynamic regime:
+  RL objective = 11.395 vs best baseline 11.395 (delta 0.000)
+  Interpretation: tie. RL matched strongest dynamic baseline on this small case.
+
+- Spatial regime:
+  RL objective = 5.965 vs best baseline 4.730 (delta +1.236)
+  Interpretation: RL wins here; spatial-aware learned policy helps.
+
+Submodularity-violation diagnostics (from compare_regimes_current_tuned.json):
+- spread: 0.02
+- dynamic: 0.06
+- spatial: 0.00
+Meaning: dynamic setting shows more non-submodular behavior than spread/spatial,
+which usually makes optimization and transfer less stable.
+
+B) Corrected transfer budget sweep (N=300,500 and k=5,10,15)
+Source tables generated from corrected artifacts:
+- artifacts/paper_minimal/tables/table_transfer_budget_sweep.md
+- artifacts/paper_minimal/tables/table_transfer_budget_sweep.tex
+
+Key patterns by regime:
+
+1. Spread
+- Best RL mode beats baseline in only 1 out of 6 cells.
+- Mean gap vs baseline (higher is better; 0 means tie):
+  - Zero-shot:  -14.474
+  - Warm-start: -10.313
+  - Scratch:    -23.677
+- Interpretation:
+  Warm-start is usually the least-bad RL mode in spread transfer,
+  but spread baselines remain strong overall, especially at higher k.
+
+2. Dynamic
+- Best RL mode beats baseline in 0 out of 6 cells.
+- Mean gap vs baseline:
+  - Zero-shot:  -15.839
+  - Warm-start: -15.475
+  - Scratch:    -14.402
+- Interpretation:
+  All RL transfer modes are close to each other but below dynamic baseline.
+  Dynamic transfer remains the hardest regime in this run.
+
+3. Spatial
+- Best RL mode beats baseline in 3 out of 6 cells.
+- Mean gap vs baseline:
+  - Zero-shot:  -22.485
+  - Warm-start: -18.908
+  - Scratch:    -2.129
+- Interpretation:
+  Spatial has the most competitive RL transfer behavior.
+  Scratch adaptation often performs best among RL modes, and some cells
+  surpass baseline (example: N=500, k=10 zero-shot gap +3.984).
+
+Across all 18 transfer cells (2 targets x 3 budgets x 3 regimes):
+- Best RL mode winner counts:
+  - Scratch: 10 cells
+  - Warm-start: 4 cells
+  - Zero-shot: 4 cells
+Interpretation:
+- No single transfer mode dominates all conditions.
+- Scratch is most frequently best among RL modes in this experiment.
+
+====================================================================
+4) Explanation of TABLE exports
+====================================================================
+
+A) Existing main table (paper minimal)
+- File: artifacts/paper_minimal/tables/table_main_results.md
+- LaTeX: artifacts/paper_minimal/tables/table_main_results.tex
+- Purpose:
+  Compact regime-level comparison of RL vs best baseline on the tuned main case.
+
+Columns explained:
+- RL seeds: chosen airports by RL.
+- RL objective/mass/coverage/cost: raw metrics for RL selection.
+- Best baseline + Baseline seeds/objective: strongest non-RL competitor.
+- Delta RL-baseline: positive means RL better.
+
+B) Existing transfer table (legacy single config)
+- File: artifacts/paper_minimal/tables/table_transfer_results.md
+- LaTeX: artifacts/paper_minimal/tables/table_transfer_results.tex
+- Purpose:
+  Shows one transfer snapshot/config summary.
+- Note:
+  This table is not the full corrected k=5,10,15 sweep. It remains useful as a
+  compact single-run summary, but not as the full budget-comparison evidence.
+
+C) New corrected transfer sweep tables (exported now)
+- Markdown: artifacts/paper_minimal/tables/table_transfer_budget_sweep.md
+- LaTeX: artifacts/paper_minimal/tables/table_transfer_budget_sweep.tex
+- JSON: artifacts/paper_minimal/tables/table_transfer_budget_sweep.json
+- Purpose:
+  Full valid comparison across:
+  - target size N in {300, 500}
+  - budget k in {5, 10, 15}
+  - regimes {spread, dynamic, spatial}
+  - modes {Zero-shot, Warm-start, Scratch}
+
+Columns explained:
+- Raw objective: RL mode performance under raw MC evaluation.
+- Best baseline objective: strongest baseline in the same cell.
+- Gap vs baseline:
+  positive -> RL mode beats baseline
+  negative -> RL mode under baseline
+
+====================================================================
+5) Explanation of FIGURE exports
+====================================================================
+
+A) New corrected transfer budget figure
+- File: artifacts/experiment_ladder_figures/fig_transfer_budget_sweep.png
+- What it shows:
+  For each regime and target size, objective curves vs budget for:
+  Zero-shot, Warm-start, Scratch, Best baseline.
+- Main read:
+  Dynamic curves stay close and below baseline; spatial is most competitive;
+  spread is unstable and often baseline-dominated.
+
+B) Ladder figures
+- artifacts/experiment_ladder_figures/fig_ladder_delta_heatmap_snap120.png
+- artifacts/experiment_ladder_figures/fig_ladder_delta_heatmap_snap220.png
+- artifacts/experiment_ladder_figures/fig_ladder_delta_vs_budget.png
+- artifacts/experiment_ladder_figures/fig_ladder_regime_summary.png
+- What they show:
+  Objective gap (RL - baseline) patterns by size/snapshot/budget and by regime.
+
+C) Compute-time comparison figure
+- File: artifacts/paper_minimal/figures/fig_compute_time_comparison.png
+- Numeric summary file: artifacts/paper_minimal/compute_time_summary.json
+- Main timing results in this run:
+  - Transfer cells each took about 10.53h to 10.97h (avg ~10.74h).
+  - Tuning + rerank time by regime:
+    spread  ~0.09h + 0.07h
+    dynamic ~5.04h + 2.94h
+    spatial ~0.84h + 0.55h
+  Interpretation:
+  Dynamic regime is the major compute bottleneck.
+
+====================================================================
+6) Export checklist (this run)
+====================================================================
+
+Created/updated analysis and export files:
+- artifacts/paper_minimal/model_io_results_detailed_summary.txt   (this report)
+- artifacts/paper_minimal/tables/table_transfer_budget_sweep.md
+- artifacts/paper_minimal/tables/table_transfer_budget_sweep.tex
+- artifacts/paper_minimal/tables/table_transfer_budget_sweep.json
+- artifacts/experiment_ladder_figures/fig_transfer_budget_sweep.png
+- artifacts/paper_minimal/figures/fig_compute_time_comparison.png
+- artifacts/paper_minimal/compute_time_summary.json
+
+Added helper scripts for reproducible export:
+- src/spatial_im/artifacts/make_transfer_budget_figure.py
+- src/spatial_im/artifacts/make_transfer_budget_tables.py
+

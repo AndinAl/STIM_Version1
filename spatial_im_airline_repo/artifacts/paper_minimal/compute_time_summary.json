@@ -1,0 +1,48 @@
+{
+  "regime_timings": [
+    {
+      "regime": "spread",
+      "tuning_seconds": 336.6550236940384,
+      "avg_trial_seconds": 16.824197620153427,
+      "rerank_seconds": 244.0
+    },
+    {
+      "regime": "dynamic",
+      "tuning_seconds": 18128.145003318787,
+      "avg_trial_seconds": 604.2624959349632,
+      "rerank_seconds": 10601.0
+    },
+    {
+      "regime": "spatial",
+      "tuning_seconds": 3034.1350212693214,
+      "avg_trial_seconds": 151.69720575213432,
+      "rerank_seconds": 1997.0
+    }
+  ],
+  "transfer_timings": [
+    {
+      "label": "N=300, k=10",
+      "seconds": 38576.0
+    },
+    {
+      "label": "N=300, k=15",
+      "seconds": 38720.0
+    },
+    {
+      "label": "N=300, k=5",
+      "seconds": 37895.0
+    },
+    {
+      "label": "N=500, k=10",
+      "seconds": 39226.0
+    },
+    {
+      "label": "N=500, k=15",
+      "seconds": 39505.0
+    },
+    {
+      "label": "N=500, k=5",
+      "seconds": 37982.0
+    }
+  ]
+}
