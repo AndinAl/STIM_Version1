@@ -1,0 +1,90 @@
+STIM Light Version - Model And Data Summary
+Generated on: 2026-05-12
+
+1) Goal of the light setup
+- Run a smaller but protocol-faithful transfer pipeline:
+  1. Tune one config per regime with Optuna on source family.
+  2. Rerank top trials with raw Monte Carlo on held-out source graphs.
+  3. Freeze winner config per regime.
+  4. Evaluate transfer on larger target graphs.
+
+2) Model overview (same core STIM architecture)
+- Diffusion surrogate:
+  - Progressive temporal GNN diffusor.
+  - Predicts activation rollout from seed choices and temporal edge weights.
+- Policy:
+  - DQN-style sequential seed selector.
+  - Uses candidate features from activation state, temporal summaries, and spatial features.
+- Regimes:
+  - spread: objective mostly activated mass.
+  - dynamic: temporal sequence objective.
+  - spatial: activated mass + coverage - cost.
+
+3) Light synthetic data family used in this run
+Manifest:
+- artifacts/homogeneous_family_topological_light_manifest.json
+
+Source (for tuning + pretraining):
+- source_75: 3 graphs, N=75, avg_degree~5.0, snapshots=80
+  - edges by graph: 363, 375, 389
+- source_150: 3 graphs, N=150, avg_degree~6.0, snapshots=120
+  - edges by graph: 922, 945, 955
+
+Target (for transfer evaluation):
+- target_250: N=250, avg_degree~6.5, snapshots=150, edges=1661
+- target_400: N=400, avg_degree~7.0, snapshots=180, edges=2831
+- target_600: N=600, avg_degree~7.5, snapshots=220, edges=4554
+
+4) Light protocol settings
+- Regimes tuned: spread, dynamic, spatial.
+- Budgets in light transfer sweep: k in {5, 10}.
+- Source tuning grid: sizes {75,150} x snapshots {80,120} x budgets {5,10}.
+- Optuna trials:
+  - spread: 8
+  - dynamic: 12
+  - spatial: 8
+- Raw rerank:
+  - top_k=3 trials per regime
+  - graphs_per_cell=3 hold-out repeats
+
+5) Main light outputs in paper_light
+Figures:
+- figures/fig_light_transfer_budget_sweep.png
+- figures/fig_light_rerank_winners.png
+- figures/fig_light_compute_time_comparison.png
+- figures/network_maps_light/*.png (all source/target networks used)
+
+Tables:
+- tables/table_light_transfer_budget_sweep.md
+- tables/table_light_transfer_budget_sweep.tex
+- tables/table_light_rerank_winners.md
+- tables/table_light_rerank_winners.tex
+
+Timing summary:
+- compute_time_summary.json
+
+6) High-level reading of light results
+- spread:
+  - remains baseline-dominated in transfer (negative gaps in all cells).
+- dynamic:
+  - close to baseline; several cells slightly above baseline.
+- spatial:
+  - strongest transfer regime; multiple cells above baseline.
+- transfer mode pattern in this light run:
+  - zero-shot is frequently strongest among RL modes.
+  - warm-start is not consistently better than zero-shot.
+
+7) Network plots added for experiment transparency
+The following network-map plots were added to paper_light:
+- source:
+  - fig_light_network_source_size75_graph0.png
+  - fig_light_network_source_size75_graph1.png
+  - fig_light_network_source_size75_graph2.png
+  - fig_light_network_source_size150_graph0.png
+  - fig_light_network_source_size150_graph1.png
+  - fig_light_network_source_size150_graph2.png
+- target:
+  - fig_light_network_target_size250.png
+  - fig_light_network_target_size400.png
+  - fig_light_network_target_size600.png
+

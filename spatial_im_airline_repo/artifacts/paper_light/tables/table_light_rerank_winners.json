@@ -1,0 +1,31 @@
+{
+  "rows": [
+    {
+      "regime": "spread",
+      "trial_number": 6,
+      "rank_by_optuna": 3,
+      "optuna_value": -0.375,
+      "mean_raw_objective": 39.55078125,
+      "mean_delta_objective": -0.3489583333333333,
+      "win_rate": 0.0
+    },
+    {
+      "regime": "dynamic",
+      "trial_number": 6,
+      "rank_by_optuna": 3,
+      "optuna_value": 0.13566091060638463,
+      "mean_raw_objective": 137.7201808730761,
+      "mean_delta_objective": -0.28318883975346704,
+      "win_rate": 0.4166666666666667
+    },
+    {
+      "regime": "spatial",
+      "trial_number": 7,
+      "rank_by_optuna": 1,
+      "optuna_value": 4.0440647244453425,
+      "mean_raw_objective": 60.210295577843986,
+      "mean_delta_objective": 2.5805273691813153,
+      "win_rate": 0.9166666666666666
+    }
+  ]
+}

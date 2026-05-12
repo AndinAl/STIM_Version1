@@ -1,0 +1,490 @@
+{
+  "rows": [
+    {
+      "target_size": 250,
+      "budget": 5,
+      "regime": "dynamic",
+      "mode": "Scratch",
+      "raw_objective": 310.9972710609436,
+      "best_baseline_objective": 311.1646822929382,
+      "gap_vs_baseline": -0.16741123199460617
+    },
+    {
+      "target_size": 250,
+      "budget": 5,
+      "regime": "dynamic",
+      "mode": "Warm-start",
+      "raw_objective": 311.1646821975708,
+      "best_baseline_objective": 311.1646822929382,
+      "gap_vs_baseline": -9.536739753457368e-08
+    },
+    {
+      "target_size": 250,
+      "budget": 5,
+      "regime": "dynamic",
+      "mode": "Zero-shot",
+      "raw_objective": 311.1646821975708,
+      "best_baseline_objective": 311.1646822929382,
+      "gap_vs_baseline": -9.536739753457368e-08
+    },
+    {
+      "target_size": 250,
+      "budget": 5,
+      "regime": "spatial",
+      "mode": "Scratch",
+      "raw_objective": 60.119282245635986,
+      "best_baseline_objective": 86.49336824417114,
+      "gap_vs_baseline": -26.37408599853515
+    },
+    {
+      "target_size": 250,
+      "budget": 5,
+      "regime": "spatial",
+      "mode": "Warm-start",
+      "raw_objective": 84.8663116455078,
+      "best_baseline_objective": 86.49336824417114,
+      "gap_vs_baseline": -1.62705659866333
+    },
+    {
+      "target_size": 250,
+      "budget": 5,
+      "regime": "spatial",
+      "mode": "Zero-shot",
+      "raw_objective": 83.95464267730713,
+      "best_baseline_objective": 86.49336824417114,
+      "gap_vs_baseline": -2.5387255668640023
+    },
+    {
+      "target_size": 250,
+      "budget": 5,
+      "regime": "spread",
+      "mode": "Scratch",
+      "raw_objective": 43.09375,
+      "best_baseline_objective": 43.59375,
+      "gap_vs_baseline": -0.5
+    },
+    {
+      "target_size": 250,
+      "budget": 5,
+      "regime": "spread",
+      "mode": "Warm-start",
+      "raw_objective": 31.5,
+      "best_baseline_objective": 43.59375,
+      "gap_vs_baseline": -12.09375
+    },
+    {
+      "target_size": 250,
+      "budget": 5,
+      "regime": "spread",
+      "mode": "Zero-shot",
+      "raw_objective": 35.5625,
+      "best_baseline_objective": 43.59375,
+      "gap_vs_baseline": -8.03125
+    },
+    {
+      "target_size": 250,
+      "budget": 10,
+      "regime": "dynamic",
+      "mode": "Scratch",
+      "raw_objective": 309.56889934539794,
+      "best_baseline_objective": 309.02514572143554,
+      "gap_vs_baseline": 0.5437536239624023
+    },
+    {
+      "target_size": 250,
+      "budget": 10,
+      "regime": "dynamic",
+      "mode": "Warm-start",
+      "raw_objective": 310.0890232086182,
+      "best_baseline_objective": 309.02514572143554,
+      "gap_vs_baseline": 1.0638774871826513
+    },
+    {
+      "target_size": 250,
+      "budget": 10,
+      "regime": "dynamic",
+      "mode": "Zero-shot",
+      "raw_objective": 310.1018924713135,
+      "best_baseline_objective": 309.02514572143554,
+      "gap_vs_baseline": 1.076746749877941
+    },
+    {
+      "target_size": 250,
+      "budget": 10,
+      "regime": "spatial",
+      "mode": "Scratch",
+      "raw_objective": 88.20098648071288,
+      "best_baseline_objective": 107.83212757110596,
+      "gap_vs_baseline": -19.631141090393072
+    },
+    {
+      "target_size": 250,
+      "budget": 10,
+      "regime": "spatial",
+      "mode": "Warm-start",
+      "raw_objective": 113.99288940429688,
+      "best_baseline_objective": 107.83212757110596,
+      "gap_vs_baseline": 6.160761833190918
+    },
+    {
+      "target_size": 250,
+      "budget": 10,
+      "regime": "spatial",
+      "mode": "Zero-shot",
+      "raw_objective": 122.74150619506835,
+      "best_baseline_objective": 107.83212757110596,
+      "gap_vs_baseline": 14.909378623962397
+    },
+    {
+      "target_size": 250,
+      "budget": 10,
+      "regime": "spread",
+      "mode": "Scratch",
+      "raw_objective": 61.625,
+      "best_baseline_objective": 76.84375,
+      "gap_vs_baseline": -15.21875
+    },
+    {
+      "target_size": 250,
+      "budget": 10,
+      "regime": "spread",
+      "mode": "Warm-start",
+      "raw_objective": 32.28125,
+      "best_baseline_objective": 76.84375,
+      "gap_vs_baseline": -44.5625
+    },
+    {
+      "target_size": 250,
+      "budget": 10,
+      "regime": "spread",
+      "mode": "Zero-shot",
+      "raw_objective": 63.71875,
+      "best_baseline_objective": 76.84375,
+      "gap_vs_baseline": -13.125
+    },
+    {
+      "target_size": 400,
+      "budget": 5,
+      "regime": "dynamic",
+      "mode": "Scratch",
+      "raw_objective": 498.7444356918335,
+      "best_baseline_objective": 498.84040269851687,
+      "gap_vs_baseline": -0.09596700668339508
+    },
+    {
+      "target_size": 400,
+      "budget": 5,
+      "regime": "dynamic",
+      "mode": "Warm-start",
+      "raw_objective": 498.787840461731,
+      "best_baseline_objective": 498.84040269851687,
+      "gap_vs_baseline": -0.05256223678588867
+    },
+    {
+      "target_size": 400,
+      "budget": 5,
+      "regime": "dynamic",
+      "mode": "Zero-shot",
+      "raw_objective": 498.787840461731,
+      "best_baseline_objective": 498.84040269851687,
+      "gap_vs_baseline": -0.05256223678588867
+    },
+    {
+      "target_size": 400,
+      "budget": 5,
+      "regime": "spatial",
+      "mode": "Scratch",
+      "raw_objective": 123.81834392547607,
+      "best_baseline_objective": 117.6172721862793,
+      "gap_vs_baseline": 6.201071739196777
+    },
+    {
+      "target_size": 400,
+      "budget": 5,
+      "regime": "spatial",
+      "mode": "Warm-start",
+      "raw_objective": 101.36988887786865,
+      "best_baseline_objective": 117.6172721862793,
+      "gap_vs_baseline": -16.247383308410647
+    },
+    {
+      "target_size": 400,
+      "budget": 5,
+      "regime": "spatial",
+      "mode": "Zero-shot",
+      "raw_objective": 101.36988887786865,
+      "best_baseline_objective": 117.6172721862793,
+      "gap_vs_baseline": -16.247383308410647
+    },
+    {
+      "target_size": 400,
+      "budget": 5,
+      "regime": "spread",
+      "mode": "Scratch",
+      "raw_objective": 40.75,
+      "best_baseline_objective": 46.9375,
+      "gap_vs_baseline": -6.1875
+    },
+    {
+      "target_size": 400,
+      "budget": 5,
+      "regime": "spread",
+      "mode": "Warm-start",
+      "raw_objective": 39.09375,
+      "best_baseline_objective": 46.9375,
+      "gap_vs_baseline": -7.84375
+    },
+    {
+      "target_size": 400,
+      "budget": 5,
+      "regime": "spread",
+      "mode": "Zero-shot",
+      "raw_objective": 39.46875,
+      "best_baseline_objective": 46.9375,
+      "gap_vs_baseline": -7.46875
+    },
+    {
+      "target_size": 400,
+      "budget": 10,
+      "regime": "dynamic",
+      "mode": "Scratch",
+      "raw_objective": 497.5786027908325,
+      "best_baseline_objective": 497.02248229980466,
+      "gap_vs_baseline": 0.5561204910278548
+    },
+    {
+      "target_size": 400,
+      "budget": 10,
+      "regime": "dynamic",
+      "mode": "Warm-start",
+      "raw_objective": 497.4460929870605,
+      "best_baseline_objective": 497.02248229980466,
+      "gap_vs_baseline": 0.4236106872558594
+    },
+    {
+      "target_size": 400,
+      "budget": 10,
+      "regime": "dynamic",
+      "mode": "Zero-shot",
+      "raw_objective": 497.4652404785156,
+      "best_baseline_objective": 497.02248229980466,
+      "gap_vs_baseline": 0.44275817871096024
+    },
+    {
+      "target_size": 400,
+      "budget": 10,
+      "regime": "spatial",
+      "mode": "Scratch",
+      "raw_objective": 146.83442268371581,
+      "best_baseline_objective": 147.869282913208,
+      "gap_vs_baseline": -1.0348602294921818
+    },
+    {
+      "target_size": 400,
+      "budget": 10,
+      "regime": "spatial",
+      "mode": "Warm-start",
+      "raw_objective": 155.0554977416992,
+      "best_baseline_objective": 147.869282913208,
+      "gap_vs_baseline": 7.186214828491217
+    },
+    {
+      "target_size": 400,
+      "budget": 10,
+      "regime": "spatial",
+      "mode": "Zero-shot",
+      "raw_objective": 164.07745552062988,
+      "best_baseline_objective": 147.869282913208,
+      "gap_vs_baseline": 16.208172607421886
+    },
+    {
+      "target_size": 400,
+      "budget": 10,
+      "regime": "spread",
+      "mode": "Scratch",
+      "raw_objective": 68.375,
+      "best_baseline_objective": 85.96875,
+      "gap_vs_baseline": -17.59375
+    },
+    {
+      "target_size": 400,
+      "budget": 10,
+      "regime": "spread",
+      "mode": "Warm-start",
+      "raw_objective": 57.5625,
+      "best_baseline_objective": 85.96875,
+      "gap_vs_baseline": -28.40625
+    },
+    {
+      "target_size": 400,
+      "budget": 10,
+      "regime": "spread",
+      "mode": "Zero-shot",
+      "raw_objective": 68.875,
+      "best_baseline_objective": 85.96875,
+      "gap_vs_baseline": -17.09375
+    },
+    {
+      "target_size": 600,
+      "budget": 5,
+      "regime": "dynamic",
+      "mode": "Scratch",
+      "raw_objective": 748.840105342865,
+      "best_baseline_objective": 748.6143892288208,
+      "gap_vs_baseline": 0.22571611404418945
+    },
+    {
+      "target_size": 600,
+      "budget": 5,
+      "regime": "dynamic",
+      "mode": "Warm-start",
+      "raw_objective": 748.3889833450318,
+      "best_baseline_objective": 748.6143892288208,
+      "gap_vs_baseline": -0.2254058837889943
+    },
+    {
+      "target_size": 600,
+      "budget": 5,
+      "regime": "dynamic",
+      "mode": "Zero-shot",
+      "raw_objective": 748.7238906860351,
+      "best_baseline_objective": 748.6143892288208,
+      "gap_vs_baseline": 0.1095014572143782
+    },
+    {
+      "target_size": 600,
+      "budget": 5,
+      "regime": "spatial",
+      "mode": "Scratch",
+      "raw_objective": 37.17686386108399,
+      "best_baseline_objective": 170.5669313430786,
+      "gap_vs_baseline": -133.3900674819946
+    },
+    {
+      "target_size": 600,
+      "budget": 5,
+      "regime": "spatial",
+      "mode": "Warm-start",
+      "raw_objective": 37.66040878295898,
+      "best_baseline_objective": 170.5669313430786,
+      "gap_vs_baseline": -132.90652256011964
+    },
+    {
+      "target_size": 600,
+      "budget": 5,
+      "regime": "spatial",
+      "mode": "Zero-shot",
+      "raw_objective": 173.67086200714112,
+      "best_baseline_objective": 170.5669313430786,
+      "gap_vs_baseline": 3.103930664062517
+    },
+    {
+      "target_size": 600,
+      "budget": 5,
+      "regime": "spread",
+      "mode": "Scratch",
+      "raw_objective": 50.28125,
+      "best_baseline_objective": 51.78125,
+      "gap_vs_baseline": -1.5
+    },
+    {
+      "target_size": 600,
+      "budget": 5,
+      "regime": "spread",
+      "mode": "Warm-start",
+      "raw_objective": 31.5,
+      "best_baseline_objective": 51.78125,
+      "gap_vs_baseline": -20.28125
+    },
+    {
+      "target_size": 600,
+      "budget": 5,
+      "regime": "spread",
+      "mode": "Zero-shot",
+      "raw_objective": 37.15625,
+      "best_baseline_objective": 51.78125,
+      "gap_vs_baseline": -14.625
+    },
+    {
+      "target_size": 600,
+      "budget": 10,
+      "regime": "dynamic",
+      "mode": "Scratch",
+      "raw_objective": 746.7132389068604,
+      "best_baseline_objective": 746.5571537017822,
+      "gap_vs_baseline": 0.15608520507817047
+    },
+    {
+      "target_size": 600,
+      "budget": 10,
+      "regime": "dynamic",
+      "mode": "Warm-start",
+      "raw_objective": 747.11113986969,
+      "best_baseline_objective": 746.5571537017822,
+      "gap_vs_baseline": 0.5539861679077376
+    },
+    {
+      "target_size": 600,
+      "budget": 10,
+      "regime": "dynamic",
+      "mode": "Zero-shot",
+      "raw_objective": 747.3980379104614,
+      "best_baseline_objective": 746.5571537017822,
+      "gap_vs_baseline": 0.8408842086791992
+    },
+    {
+      "target_size": 600,
+      "budget": 10,
+      "regime": "spatial",
+      "mode": "Scratch",
+      "raw_objective": 185.6231315612793,
+      "best_baseline_objective": 197.45573348999022,
+      "gap_vs_baseline": -11.832601928710915
+    },
+    {
+      "target_size": 600,
+      "budget": 10,
+      "regime": "spatial",
+      "mode": "Warm-start",
+      "raw_objective": 60.289361572265626,
+      "best_baseline_objective": 197.45573348999022,
+      "gap_vs_baseline": -137.1663719177246
+    },
+    {
+      "target_size": 600,
+      "budget": 10,
+      "regime": "spatial",
+      "mode": "Zero-shot",
+      "raw_objective": 208.44518508911133,
+      "best_baseline_objective": 197.45573348999022,
+      "gap_vs_baseline": 10.98945159912111
+    },
+    {
+      "target_size": 600,
+      "budget": 10,
+      "regime": "spread",
+      "mode": "Scratch",
+      "raw_objective": 82.4375,
+      "best_baseline_objective": 96.6875,
+      "gap_vs_baseline": -14.25
+    },
+    {
+      "target_size": 600,
+      "budget": 10,
+      "regime": "spread",
+      "mode": "Warm-start",
+      "raw_objective": 53.71875,
+      "best_baseline_objective": 96.6875,
+      "gap_vs_baseline": -42.96875
+    },
+    {
+      "target_size": 600,
+      "budget": 10,
+      "regime": "spread",
+      "mode": "Zero-shot",
+      "raw_objective": 89.5,
+      "best_baseline_objective": 96.6875,
+      "gap_vs_baseline": -7.1875
+    }
+  ]
+}
