@@ -1,0 +1,99 @@
+{
+  "airports_csv": "data/homogeneous_family_topological_light/target/size_600/airports.csv",
+  "routes_csv": "data/homogeneous_family_topological_light/target/size_600/routes.csv",
+  "snapshots": 220,
+  "seed": 25,
+  "top_k": 10,
+  "rows": [
+    {
+      "node_idx": 565,
+      "iata": "A565",
+      "mean_out_strength": 11.753737449645996,
+      "min_out_strength": 8.75331974029541,
+      "max_out_strength": 14.250910758972168,
+      "std_out_strength": 1.8049253225326538,
+      "relative_swing_pct": 46.773128509521484
+    },
+    {
+      "node_idx": 413,
+      "iata": "A413",
+      "mean_out_strength": 9.563055992126465,
+      "min_out_strength": 6.806480407714844,
+      "max_out_strength": 12.28630542755127,
+      "std_out_strength": 1.7502079010009766,
+      "relative_swing_pct": 57.30202865600586
+    },
+    {
+      "node_idx": 485,
+      "iata": "A485",
+      "mean_out_strength": 8.90001106262207,
+      "min_out_strength": 6.8340067863464355,
+      "max_out_strength": 11.027641296386719,
+      "std_out_strength": 1.2027570009231567,
+      "relative_swing_pct": 47.11943054199219
+    },
+    {
+      "node_idx": 495,
+      "iata": "A495",
+      "mean_out_strength": 8.782938003540039,
+      "min_out_strength": 6.928575038909912,
+      "max_out_strength": 10.48499584197998,
+      "std_out_strength": 1.0338902473449707,
+      "relative_swing_pct": 40.49238204956055
+    },
+    {
+      "node_idx": 385,
+      "iata": "A385",
+      "mean_out_strength": 8.745295524597168,
+      "min_out_strength": 6.251967430114746,
+      "max_out_strength": 10.519689559936523,
+      "std_out_strength": 1.2909624576568604,
+      "relative_swing_pct": 48.80020523071289
+    },
+    {
+      "node_idx": 29,
+      "iata": "A029",
+      "mean_out_strength": 8.736945152282715,
+      "min_out_strength": 6.163011074066162,
+      "max_out_strength": 11.115373611450195,
+      "std_out_strength": 1.5116026401519775,
+      "relative_swing_pct": 56.68299865722656
+    },
+    {
+      "node_idx": 147,
+      "iata": "A147",
+      "mean_out_strength": 8.476679801940918,
+      "min_out_strength": 6.833602428436279,
+      "max_out_strength": 10.064421653747559,
+      "std_out_strength": 0.9061797261238098,
+      "relative_swing_pct": 38.11420440673828
+    },
+    {
+      "node_idx": 163,
+      "iata": "A163",
+      "mean_out_strength": 8.320425033569336,
+      "min_out_strength": 6.1196675300598145,
+      "max_out_strength": 10.31632137298584,
+      "std_out_strength": 1.2586331367492676,
+      "relative_swing_pct": 50.43797302246094
+    },
+    {
+      "node_idx": 262,
+      "iata": "A262",
+      "mean_out_strength": 8.242215156555176,
+      "min_out_strength": 6.344048023223877,
+      "max_out_strength": 9.86229133605957,
+      "std_out_strength": 1.0834578275680542,
+      "relative_swing_pct": 42.68565368652344
+    },
+    {
+      "node_idx": 249,
+      "iata": "A249",
+      "mean_out_strength": 8.190083503723145,
+      "min_out_strength": 6.6331682205200195,
+      "max_out_strength": 9.66943073272705,
+      "std_out_strength": 0.7862280011177063,
+      "relative_swing_pct": 37.07242202758789
+    }
+  ]
+}
