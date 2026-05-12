@@ -1,0 +1,40 @@
+# Python caches and build artifacts
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Virtual environments
+.venv/
+venv/
+env/
+spatial_im_airline_repo/.venv/
+
+# IDE / OS files
+.vscode/
+.idea/
+.DS_Store
+
+# Generated experiment logs and local studies
+spatial_im_airline_repo/artifacts/logs/
+spatial_im_airline_repo/artifacts/logs_light/
+spatial_im_airline_repo/artifacts/logs_topological/
+spatial_im_airline_repo/artifacts/optuna/
+spatial_im_airline_repo/artifacts/optuna_light/
+
+# Generated artifacts at root level (non-curated outputs)
+spatial_im_airline_repo/artifacts/best_config_*.json
+spatial_im_airline_repo/artifacts/rerank_*.json
+spatial_im_airline_repo/artifacts/transfer_*.json
+spatial_im_airline_repo/artifacts/optuna_*.json
+spatial_im_airline_repo/artifacts/compare_regimes_*.json
+spatial_im_airline_repo/artifacts/experiment_ladder_from_rerank_winners.json
+spatial_im_airline_repo/artifacts/homogeneous_family*_manifest.json
+
+# Local paper-minimal intermediate exports (non-final)
+spatial_im_airline_repo/artifacts/paper_minimal/paper_minimal_manifest.json
+spatial_im_airline_repo/artifacts/paper_minimal/tables/table_main_results.*
+spatial_im_airline_repo/artifacts/paper_minimal/tables/table_transfer_results.*

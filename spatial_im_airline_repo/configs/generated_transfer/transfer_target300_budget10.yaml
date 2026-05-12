@@ -1,0 +1,125 @@
+seed: 7
+data:
+  airports_csv: data/sample_airline/airports.csv
+  routes_csv: data/sample_airline/routes.csv
+  snapshots: 220
+  seasonal_strength: 0.3
+  noise_std: 0.05
+  self_loop: false
+simulator:
+  mc_rollouts: 32
+  activation_threshold: 0.5
+  coverage_radius_km: 900.0
+model:
+  hidden_dim: 64
+  layers: 2
+  diffusor_lr: 0.001
+  diffusor_epochs: 5
+  batch_size: 16
+  teacher_mc_rollouts: 24
+  marginal_loss_weight: 1.0
+  ranking_loss_weight: 0.2
+rl:
+  budget: 10
+  gamma: 0.95
+  lr: 0.001
+  buffer_capacity: 2000
+  batch_size: 16
+  train_episodes: 40
+  warmup_episodes: 10
+  target_update_every: 10
+  eps_start: 1.0
+  eps_end: 0.05
+  eps_decay: 0.985
+  hidden_dim: 64
+reward:
+  beta_coverage: 0.25
+  lambda_cost: 0.1
+  cost_mode: geography
+  constant_cost: 1.0
+  distance_cost_scale: 0.0015
+  use_shaping: false
+  alpha_spread: 0.0
+  alpha_cover: 0.0
+  alpha_cost: 0.0
+evaluation:
+  regime: dynamic
+  transfer_split: 8
+  submodularity_samples: 50
+  threshold_fraction: 0.9
+pretraining:
+  iterations: 24
+  episodes_per_iteration: 1
+  diffusor_update_epochs: 1
+  diffusor_update_batch_size: 8
+  budgets:
+  - 10
+  regimes:
+  - spread
+  - dynamic
+  - spatial
+  source_graphs:
+  - name: source_size100_g0
+    airports_csv: data/homogeneous_family/source/size_100/graph_0/airports.csv
+    routes_csv: data/homogeneous_family/source/size_100/graph_0/routes.csv
+    snapshots: 120
+    seasonal_strength: 0.3
+    noise_std: 0.05
+    seed_offset: 0
+  - name: source_size100_g1
+    airports_csv: data/homogeneous_family/source/size_100/graph_1/airports.csv
+    routes_csv: data/homogeneous_family/source/size_100/graph_1/routes.csv
+    snapshots: 120
+    seasonal_strength: 0.3
+    noise_std: 0.05
+    seed_offset: 1
+  - name: source_size100_g2
+    airports_csv: data/homogeneous_family/source/size_100/graph_2/airports.csv
+    routes_csv: data/homogeneous_family/source/size_100/graph_2/routes.csv
+    snapshots: 120
+    seasonal_strength: 0.3
+    noise_std: 0.05
+    seed_offset: 2
+  - name: source_size200_g0
+    airports_csv: data/homogeneous_family/source/size_200/graph_0/airports.csv
+    routes_csv: data/homogeneous_family/source/size_200/graph_0/routes.csv
+    snapshots: 220
+    seasonal_strength: 0.3
+    noise_std: 0.05
+    seed_offset: 3
+  - name: source_size200_g1
+    airports_csv: data/homogeneous_family/source/size_200/graph_1/airports.csv
+    routes_csv: data/homogeneous_family/source/size_200/graph_1/routes.csv
+    snapshots: 220
+    seasonal_strength: 0.3
+    noise_std: 0.05
+    seed_offset: 4
+  - name: source_size200_g2
+    airports_csv: data/homogeneous_family/source/size_200/graph_2/airports.csv
+    routes_csv: data/homogeneous_family/source/size_200/graph_2/routes.csv
+    snapshots: 220
+    seasonal_strength: 0.3
+    noise_std: 0.05
+    seed_offset: 5
+adaptation:
+  iterations: 4
+  refresh_diffusor: true
+  diffusor_update_epochs: 1
+  diffusor_update_batch_size: 8
+  refine_policy: true
+  policy_episodes_per_iteration: 1
+  buffer_capacity: 512
+  warmup_episodes: 0
+  target_update_every: 2
+  eps_start: 0.2
+  eps_end: 0.05
+  eps_decay: 0.95
+  fixed_start_snapshot: true
+zero_shot_target:
+  name: target_size300
+  airports_csv: data/homogeneous_family/target/size_300/airports.csv
+  routes_csv: data/homogeneous_family/target/size_300/routes.csv
+  snapshots: 220
+  seasonal_strength: 0.3
+  noise_std: 0.05
+  seed_offset: 13
